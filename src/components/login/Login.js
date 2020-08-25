@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { urlAPI } from "../../config/Config.js";
 
 export default function Login() {
   /*---------------------------------------
@@ -6,7 +7,7 @@ export default function Login() {
     --------------------------------------*/
 
   const [admin, logIn] = useState({
-    user: "",
+    usuario: "",
     password: "",
   });
 
@@ -25,9 +26,14 @@ export default function Login() {
     Ejecutamos el submit
     --------------------------------------*/
 
-  const login = (e) => {
+  const login = async (e) => {
     e.preventDefault();
-    console.log("logIn -> admin", admin);
+    const result = await loginAPI(admin);
+
+    if (result.status !== 200) {
+    } else {
+    }
+    console.log("login -> result", result);
   };
   /*---------------------------------------
     Retornamos la vista
@@ -49,7 +55,7 @@ export default function Login() {
                   type="text"
                   className="form-control"
                   placeholder="User"
-                  name="user"
+                  name="usuario"
                 />
 
                 <div className="input-group-append">
@@ -84,3 +90,29 @@ export default function Login() {
     </div>
   );
 }
+
+/*------------------------------------
+POST REQUEST FOR LOGIN
+--------------------------------------*/
+const loginAPI = (data) => {
+  const url = `${urlAPI}/login`;
+
+  const params = {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-type": "application/json",
+    },
+  };
+
+  return fetch(url, params)
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err;
+    });
+};
