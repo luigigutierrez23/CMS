@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Administrators() {
+export default function Users() {
   return (
     <div className="content-wrapper" style={{ minHeight: "494px" }}>
       <div className="content-header">
@@ -19,17 +19,29 @@ export default function Administrators() {
             <div className="col-lg-12">
               <div className="card card-primary card-outline">
                 <div className="card-header">
-                  <h5 className="m-0">Featured</h5>
+                  <h5 className="m-0"></h5>
                 </div>
                 <div className="card-body">
-                  <h6 className="card-title">Featured</h6>
-                  <p className="card-text">
-                    With supporting text below as a natural lead-in to
-                    additional content.
-                  </p>
-                  <a href="http://google.com" className="btn btn-primary">
-                    Go somewhere
-                  </a>
+                  <table
+                    className="table table-striped"
+                    style={{ width: "100%" }}
+                  >
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Usuario</th>
+                        <th>Email</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>admin</td>
+                        <td>admin@lala.com</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>

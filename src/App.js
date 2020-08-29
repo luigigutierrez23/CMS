@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import jwtDecode from "jwt-decode";
 
 //Componente Login
 import Login from "./components/login/Login";
@@ -18,7 +19,7 @@ import Articles from "./components/contents/articles/Articles";
 import Error404 from "./components/contents/error404/Error404";
 
 export default function App() {
-  const auth = false;
+  const auth = getAccesToken();
 
   if (!auth) {
     return <Login></Login>;
@@ -46,3 +47,50 @@ export default function App() {
     </div>
   );
 }
+
+/*------------------------------------
+Obtener acceso al CMS validando el token
+--------------------------------------*/
+
+const getAccesToken = () => {
+  const accessToken = localStorage.getItem("acces_token");
+  const id = localStorage.getItem("id");
+  const user = localStorage.getItem("user");
+
+  if (
+    (!accessToken || accessToken === null) &&
+    (!id || id === null) &&
+    (!user || user === null)
+  ) {
+    return false;
+  }
+
+  const metaToken = jwtDecode(accessToken);
+
+  if (!metaToken.data) {
+    return false;
+  }
+
+  if (
+    tokenExpire(accessToken, metaToken) ||
+    metaToken.data._id !== id ||
+    metaToken.data.usuario !== user
+  ) {
+    return false;
+  } else {
+    return true;
+  }
+};
+
+/*------------------------------------
+Verificar fecha de expiración token
+--------------------------------------*/
+
+const tokenExpire = (accessToken, metaToken) => {
+  const seconds = 60;
+
+  const { exp } = metaToken;
+  const now = (Date.now() + seconds) / 1000;
+
+  return exp < now;
+};

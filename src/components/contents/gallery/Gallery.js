@@ -1,6 +1,9 @@
 import React from "react";
+import { urlAPI } from "../../../config/Config";
 
-export default function Administrators() {
+export default function Gallerys() {
+  const pic1 = `${urlAPI}/mostrar-img-galeria/179.jpg`;
+
   return (
     <div className="content-wrapper" style={{ minHeight: "494px" }}>
       <div className="content-header">
@@ -19,17 +22,49 @@ export default function Administrators() {
             <div className="col-lg-12">
               <div className="card card-primary card-outline">
                 <div className="card-header">
-                  <h5 className="m-0">Featured</h5>
+                  <h5 className="m-0">
+                    <button className="btn btn-primary">Crear nuevo</button>
+                  </h5>
                 </div>
                 <div className="card-body">
-                  <h6 className="card-title">Featured</h6>
-                  <p className="card-text">
-                    With supporting text below as a natural lead-in to
-                    additional content.
-                  </p>
-                  <a href="http://google.com" className="btn btn-primary">
-                    Go somewhere
-                  </a>
+                  <table
+                    className="table table-striped"
+                    style={{ width: "100%" }}
+                  >
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th width="320px">Foto</th>
+                        <th>Acciones</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>
+                          <img src={pic1} className="img-fluid" />
+                        </td>
+                        <td>
+                          <div className="btn-group">
+                            <button
+                              type="button"
+                              className="btn btn-warning rounded-circle mr-2"
+                            >
+                              <i className="nav-icon fas fa-pencil-alt"></i>
+                            </button>
+
+                            <button
+                              type="button"
+                              className="btn btn-danger rounded-circle"
+                            >
+                              <i className="nav-icon fas fa-trash"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>

@@ -3,6 +3,8 @@ import Logo from "./img/AdminLTELogo.png";
 import UserPhoto from "./img/user2.jpg";
 
 export default function Sidebar() {
+  const user = localStorage.getItem("user");
+
   return (
     <aside className="main-sidebar sidebar-dark-primary elevation-4">
       <a href="#/" className="brand-link">
@@ -27,7 +29,7 @@ export default function Sidebar() {
           </div>
           <div className="info">
             <a href="#/" className="d-block">
-              Administrator
+              {user}
             </a>
           </div>
         </div>

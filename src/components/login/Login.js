@@ -32,8 +32,12 @@ export default function Login() {
 
     if (result.status !== 200) {
     } else {
+      localStorage.setItem("acces_token", result.token);
+      localStorage.setItem("id", result.data._id);
+      localStorage.setItem("user", result.data.usuario);
+
+      window.location.href = "/";
     }
-    console.log("login -> result", result);
   };
   /*---------------------------------------
     Retornamos la vista
