@@ -1,6 +1,17 @@
 import React from "react";
+import $ from "jquery";
+import "datatables.net";
+import "datatables.net-bs4";
+import "datatables.net-responsive";
 
 export default function Users() {
+  /*------------------------------------
+  Ejecutamos Data table
+  --------------------------------------*/
+  $(document).ready(function () {
+    $(".table").DataTable();
+  });
+
   return (
     <div className="content-wrapper" style={{ minHeight: "494px" }}>
       <div className="content-header">
@@ -18,12 +29,10 @@ export default function Users() {
           <div className="row">
             <div className="col-lg-12">
               <div className="card card-primary card-outline">
-                <div className="card-header">
-                  <h5 className="m-0"></h5>
-                </div>
+                <div className="card-header"></div>
                 <div className="card-body">
                   <table
-                    className="table table-striped"
+                    className="table table-striped dt-responsive"
                     style={{ width: "100%" }}
                   >
                     <thead>

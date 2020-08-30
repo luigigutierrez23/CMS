@@ -1,8 +1,18 @@
 import React from "react";
 import { urlAPI } from "../../../config/Config";
+import $ from "jquery";
+import "datatables.net";
+import "datatables.net-bs4";
+import "datatables.net-responsive";
 
 export default function Slides() {
   const slide1 = `${urlAPI}/mostrar-img/1219.jpg`;
+  /*------------------------------------
+  Ejecutamos Data table
+  --------------------------------------*/
+  $(document).ready(function () {
+    $(".table").DataTable();
+  });
 
   return (
     <div className="content-wrapper" style={{ minHeight: "494px" }}>
@@ -28,7 +38,7 @@ export default function Slides() {
                 </div>
                 <div className="card-body">
                   <table
-                    className="table table-striped"
+                    className="table table-striped dt-responsive"
                     style={{ width: "100%" }}
                   >
                     <thead>
@@ -45,7 +55,7 @@ export default function Slides() {
                       <tr>
                         <td>1</td>
                         <td>
-                          <img src={slide1} className="img-fluid" />
+                          <img src={slide1} className="img-fluid" alt="" />
                         </td>
                         <td>Lorem Ipsum</td>
                         <td>Lorem</td>

@@ -1,6 +1,17 @@
 import React from "react";
+import $ from "jquery";
+import "datatables.net";
+import "datatables.net-bs4";
+import "datatables.net-responsive";
 
 export default function Administrators() {
+  /*------------------------------------
+  Ejecutamos Data table
+  --------------------------------------*/
+  $(document).ready(function () {
+    $(".table").DataTable();
+  });
+
   return (
     <div className="content-wrapper" style={{ minHeight: "494px" }}>
       <div className="content-header">
@@ -25,7 +36,7 @@ export default function Administrators() {
                 </div>
                 <div className="card-body">
                   <table
-                    className="table table-striped"
+                    className="table table-striped dt-responsive"
                     style={{ width: "100%" }}
                   >
                     <thead>

@@ -1,8 +1,18 @@
 import React from "react";
 import { urlAPI } from "../../../config/Config";
+import $ from "jquery";
+import "datatables.net";
+import "datatables.net-bs4";
+import "datatables.net-responsive";
 
 export default function Gallerys() {
   const pic1 = `${urlAPI}/mostrar-img-galeria/179.jpg`;
+  /*------------------------------------
+    Ejecutamos Data table
+  --------------------------------------*/
+  $(document).ready(function () {
+    $(".table").DataTable();
+  });
 
   return (
     <div className="content-wrapper" style={{ minHeight: "494px" }}>
@@ -28,7 +38,7 @@ export default function Gallerys() {
                 </div>
                 <div className="card-body">
                   <table
-                    className="table table-striped"
+                    className="table table-striped dt-responsive"
                     style={{ width: "100%" }}
                   >
                     <thead>
@@ -43,7 +53,7 @@ export default function Gallerys() {
                       <tr>
                         <td>1</td>
                         <td>
-                          <img src={pic1} className="img-fluid" />
+                          <img src={pic1} className="img-fluid" alt="" />
                         </td>
                         <td>
                           <div className="btn-group">

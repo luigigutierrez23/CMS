@@ -1,8 +1,18 @@
 import React from "react";
 import { urlAPI } from "../../../config/Config";
+import $ from "jquery";
+import "datatables.net";
+import "datatables.net-bs4";
+import "datatables.net-responsive";
 
 export default function Articles() {
   const wallpaper1 = `${urlAPI}/mostrar-img-articulo/lorem-ipsum-1+3576.jpg`;
+  /*------------------------------------
+  Ejecutamos Data table
+  --------------------------------------*/
+  $(document).ready(function () {
+    $(".table").DataTable();
+  });
 
   return (
     <div className="content-wrapper" style={{ minHeight: "494px" }}>
@@ -28,7 +38,7 @@ export default function Articles() {
                 </div>
                 <div className="card-body">
                   <table
-                    className="table table-striped"
+                    className="table table-striped dt-responsive"
                     style={{ width: "100%" }}
                   >
                     <thead>
@@ -47,7 +57,7 @@ export default function Articles() {
                       <tr>
                         <td>1</td>
                         <td>
-                          <img src={wallpaper1} className="img-fluid" />
+                          <img src={wallpaper1} className="img-fluid" alt="" />
                         </td>
                         <td>Titulo</td>
                         <td>Intro</td>
@@ -56,9 +66,10 @@ export default function Articles() {
                           <h2>Lorem ipsum 1</h2>
                           <img
                             src="http://localhost:4000/mostrar-img/1219.jpg"
-                            class="py-3 img-fluid"
+                            className="py-3 img-fluid"
+                            alt=""
                           />
-                          <div class="text-muted">
+                          <div className="text-muted">
                             Lorem ipsum, dolor sit amet consectetur adipisicing
                             elit. Libero quod hic culpa commodi. Repudiandae
                             debitis nisi ab! Numquam accusantium, dolores rerum
