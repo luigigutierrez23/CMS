@@ -5,6 +5,8 @@ import "datatables.net";
 import "datatables.net-bs4";
 import "datatables.net-responsive";
 
+import NewAdministrator from "./NewAdministrator";
+
 export default function Administrators() {
   const dataAdmin = async () => {
     /*------------------------------------
@@ -15,7 +17,7 @@ export default function Administrators() {
     const dataSet = [];
 
     getAdmin.data.forEach((item, index) => {
-      dataSet[index] = [index + 1, item.usuario, item._id];
+      dataSet[index] = [index + 1, item.user, item._id];
     });
 
     /*------------------------------------
@@ -74,7 +76,13 @@ export default function Administrators() {
               <div className="card card-primary card-outline">
                 <div className="card-header">
                   <h5 className="m-0">
-                    <button className="btn btn-primary">Crear nuevo</button>
+                    <button
+                      className="btn btn-primary"
+                      data-toggle="modal"
+                      data-target="#newAdmin"
+                    >
+                      Crear nuevo
+                    </button>
                   </h5>
                 </div>
                 <div className="card-body">
@@ -88,6 +96,8 @@ export default function Administrators() {
           </div>
         </div>
       </div>
+
+      <NewAdministrator />
     </div>
   );
 }

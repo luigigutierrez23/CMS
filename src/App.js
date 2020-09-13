@@ -75,7 +75,7 @@ const getAccesToken = () => {
   if (
     tokenExpire(accessToken, metaToken) ||
     metaToken.data._id !== id ||
-    metaToken.data.usuario !== user
+    metaToken.data.user !== user
   ) {
     return false;
   } else {

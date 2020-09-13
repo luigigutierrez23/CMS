@@ -7,7 +7,7 @@ export default function Login() {
     --------------------------------------*/
 
   const [admin, logIn] = useState({
-    usuario: "",
+    user: "",
     password: "",
   });
 
@@ -34,7 +34,7 @@ export default function Login() {
     } else {
       localStorage.setItem("acces_token", result.token);
       localStorage.setItem("id", result.data._id);
-      localStorage.setItem("user", result.data.usuario);
+      localStorage.setItem("user", result.data.user);
 
       window.location.href = "/";
     }
@@ -59,7 +59,7 @@ export default function Login() {
                   type="text"
                   className="form-control"
                   placeholder="User"
-                  name="usuario"
+                  name="user"
                 />
 
                 <div className="input-group-append">

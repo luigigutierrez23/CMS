@@ -55,7 +55,7 @@ let crearAdministrador = (req, res) => {
 
   //Obtenemos los datos del formulario para pasarlos al modelo
   let admin = new Admin({
-    usuario: body.usuario,
+    user: body.user.toLowerCase(),
     password: bcrypt.hashSync(body.password, 10),
   });
 
@@ -64,6 +64,7 @@ let crearAdministrador = (req, res) => {
 
   admin.save((err, data) => {
     if (err) {
+      console.log(err);
       return res.json({
         status: 400,
         mensaje: "Error al guardar el administrador",
@@ -129,7 +130,7 @@ let editarAdministrador = (req, res) => {
     let cambiarRegistroBD = (id, body, pass) => {
       return new Promise((resolve, reject) => {
         let datosAdmin = {
-          usuario: body.usuario,
+          user: body.user,
           password: pass,
         };
 
@@ -246,8 +247,8 @@ let login = (req, res) => {
   //Obtenemos el cuerpo del formulario
   let body = req.body;
 
-  //Recorremos la BD en busqueda de coincidencia con el usuario
-  Admin.findOne({ usuario: body.usuario }, (err, data) => {
+  //Recorremos la BD en busqueda de coincidencia con el user
+  Admin.findOne({ user: body.user }, (err, data) => {
     if (err) {
       return res.json({
         status: 500,
@@ -259,7 +260,7 @@ let login = (req, res) => {
     if (!data) {
       return res.json({
         status: 400,
-        mensaje: "El usuario es incorrecto",
+        mensaje: "El user es incorrecto",
       });
     }
 
