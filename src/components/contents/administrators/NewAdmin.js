@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import $ from "jquery";
 import { urlAPI } from "../../../config/Config";
 
-export default function NewAdministrator() {
+export default function NewAdmin() {
   /*------------------------------------
   Hook para capturar datos 
   --------------------------------------*/
@@ -103,7 +103,7 @@ export default function NewAdministrator() {
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header">
-            <h4 className="modal-title">Modal Heading</h4>
+            <h4 className="modal-title">Crear administrador</h4>
             <button type="button" className="close" data-dismiss="modal">
               &times;
             </button>

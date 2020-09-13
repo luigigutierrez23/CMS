@@ -130,7 +130,7 @@ let editarAdministrador = (req, res) => {
     let cambiarRegistroBD = (id, body, pass) => {
       return new Promise((resolve, reject) => {
         let datosAdmin = {
-          user: body.user,
+          user: body.user.toLowerCase(),
           password: pass,
         };
 
